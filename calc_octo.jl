@@ -8,7 +8,7 @@ prof_kwargs = (:voigt => true, :progress_output => false)
 
 mag_kwargs = (:progress_output => false,)
 
-for R_in in R_in, W in Ws
+for R_in in R_ins, W in Ws
     model_name = modelname(Ṁ, T_max, R_in, W)
     dip_mag = StationarySolidMagnetosphereNHCool("dipole_$model_name", star, R_in, R_in + W, Ṁ, T_max, 10; mag_kwargs...)
     savemodel(dip_mag)  
