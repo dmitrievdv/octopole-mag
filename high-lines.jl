@@ -42,7 +42,7 @@ for line in lines
     saveprofile(dip_prof, "$(line_string)_$ang")
 end
 
-Γ = 5
+Γ = 2
 
 posoct_mag = if calc_models
     StationaryOctoDipoleMagnetosphereNHCool("posoct-$(rstring(abs(Γ)))_"*model_name, star, Ṁ, T_max, R_in, R_in + W, Γ, 10; mag_kwargs...)
@@ -85,7 +85,7 @@ fig = Figure()
 axs = [Axis(fig[1,i_line]) for i_line = 1:n_lines]
 
 prof = HydrogenProfile(star, dip_mag, "$(linename(lines[1]...))_$ang")
-vels = get_velocities(dip_prof)
+vels = get_velocities(prof)
 
 for (i_line, line) in enumerate(lines)
     dip_prof = HydrogenProfile(star, dip_mag, "$(linename(line...))_$ang")
